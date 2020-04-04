@@ -1,0 +1,18 @@
+<van-tabbar active="{{ active }}" bind:change="onChange" >
+  <van-tabbar-item icon="chart-trending-o">记录</van-tabbar-item>
+  <van-tabbar-item >
+    <image
+      slot="icon"
+      src="/image/tab-bar/post.png"
+      mode="aspectFit"
+      style="width: 70px; height: 46px;"
+    />
+    <image
+      slot="icon-active"
+      src="/image/tab-bar/post.png"
+      mode="aspectFit"
+      style="width: 70px; height: 46px;"
+    />
+    </van-tabbar-item>
+  <van-tabbar-item icon="friends-o">我</van-tabbar-item>
+</van-tabbar>

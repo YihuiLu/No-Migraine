@@ -1,0 +1,22 @@
+{
+  "name": "no-migraine",
+  "version": "1.0.0",
+  "description": "头痛记小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YihuiLu/No-Migraine.git"
+  },
+  "author": "YH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YihuiLu/No-Migraine/issues"
+  },
+  "homepage": "https://github.com/YihuiLu/No-Migraine#readme",
+  "dependencies": {
+    "@vant/weapp": "^1.1.0"
+  }
+}

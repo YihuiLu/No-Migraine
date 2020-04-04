@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/case/case",
+    "pages/recording/recording",
+    "pages/user/user"
+  ],
+
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "头痛记",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button",
+    "van-cell": "@vant/weapp/cell",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-tabbar": "@vant/weapp/tabbar",
+    "van-tabbar-item": "@vant/weapp/tabbar-item",
+    "van-dialog": "@vant/weapp/dialog/index"
+  },
+  
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [{
+      "pagePath": "pages/case/case"
+    }, {
+      "pagePath": "pages/recording/recording"
+    }, {
+      "pagePath": "pages/user/user"
+    }]
+  }
+
+}

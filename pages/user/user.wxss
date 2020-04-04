@@ -1,0 +1,60 @@
+/* pages/user.wxss */
+page{
+  background-color: #e8e8e8;
+  height: 100%;
+}
+
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 300rpx;
+  background-color: #ffffff;
+  border-top: 2.2px solid #e8e8e8; /* 边线 */
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border: 1px solid #e8e8e8;
+  margin-top: 30rpx;
+}
+
+.userinfo-nickname {
+  margin-top: 25rpx;
+  color: #333;
+}
+
+.userinfo-cell {
+  margin-top: 10px;
+}
+
+.get-info{
+  margin-top: 80rpx;
+}
+
+/*  */
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.login-alert{
+  display: flex;
+  justify-content: center;
+  flex-direction:column;
+  align-items: center;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}

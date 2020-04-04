@@ -1,0 +1,17 @@
+/* pages/recording/recording.wxss */
+
+.select_time{
+    text-align: right;
+    width: 35;
+}
+
+.value-class {
+    flex: none !important;
+  }
+
+.form-button{
+    margin-top: 60rpx;
+}
+/* .a .van-cell__value{
+    min-height: 200rpx;
+} */
