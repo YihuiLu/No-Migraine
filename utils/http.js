@@ -47,13 +47,13 @@ class HTTP {
                     params.success(res.data)
                 } else {
                     if (!res.msg) {
-                        msg = '哎呀，出现了一点小状况～'
+                        res.msg = '哎呀，出现了一点小状况～'
                     }
                     wx.showToast({
                         title: res.msg,
                         icon: 'none',
                         image: '',
-                        duration: 1500,
+                        duration: 2000,
                         mask: false,
                         success: (result) => {
                         }
@@ -61,6 +61,9 @@ class HTTP {
                 }
             },
             fail: (err) => {
+                if(params.fail){
+                    params.fail()
+                }
                 wx.showToast({
                     title: '哎呀，网络不太好～',
                     icon: 'none',

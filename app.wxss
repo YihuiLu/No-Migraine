@@ -2,15 +2,29 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 
+
 .container {
+  font-family: 'Trebuchet MS',
+                 'Lucida Sans Unicode',
+                 'Lucida Grande',
+                 'Lucida Sans',
+                 Arial,
+                 sans-serif,
+                 sans-serif;
+  font-size: 32rpx;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
+  justify-content: flex-start;
+  padding: 20rpx 0rpx;
   box-sizing: border-box;
-} 
+  overflow: hidden;
+  background-color: #fbf9fe;
+  position: relative;
+}
+
 tab-bar{
   position: relative;
 }

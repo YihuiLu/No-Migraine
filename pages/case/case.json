@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "van-popup": "@vant/weapp/popup",
-    "van-button": "@vant/weapp/button"
-  }
+    "van-button": "@vant/weapp/button",
+    "van-rate": "@vant/weapp/rate/index"
+  },
+  "enablePullDownRefresh": true
 }

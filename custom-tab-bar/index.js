@@ -9,9 +9,7 @@ Component({
 			},
 			{
 				icon: 'add',
-				text: '',
 				url: '/pages/recording/recording',
-				
 			}
 			,
 			{

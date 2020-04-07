@@ -57,7 +57,6 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true,
         })
-        console.log(res)
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -75,9 +74,7 @@ Page({
   },
 
   getUserInfo: function (e) {
-
-    case_model.login()
-
+    e.detail.session_key = wx.getStorageSync('login_data').session_key
     http.request({
       url: '/v1/user/submit/info',
       method: 'POST',

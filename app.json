@@ -8,7 +8,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "头痛记",
+    "navigationBarTitleText": "头痛记（demo版）",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

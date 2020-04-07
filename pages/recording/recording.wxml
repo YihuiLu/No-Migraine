@@ -1,36 +1,63 @@
-<!--pages/recording/recording.wxml-->
-<form>
-	<van-cell-group title="基础信息记录">
-		<van-cell title="头痛时间" is-link bind:click="pickerShow" />
-		<van-cell wx:if="{{startTime}}" title="开始时间" value="{{startTime}}" />
-		<van-cell wx:if="{{endTime}}" title="结束时间" value="{{endTime}}" border="{{ false }}" />
-		<van-cell title="疼痛等级" border="{{ false }} " label="按照0~5分给疼痛程度定级：1为轻度疼痛；达到2会影响睡眠；3会无法入睡；4为重度疼痛；5为剧痛">
-			<view>
-				<van-rate value="{{ value }}" size="{{ 19 }}" color="#ee0a24" void-color="#eee" void-icon="star" bind:change="onChange" count="{{ 5 }}" />
-			</view>
-		</van-cell>
 
-		<van-checkbox-group value="{{ result }}" bind:change="onChange">
-			<van-cell-group>
-				<van-cell wx:for="{{ list }}" wx:key="index" title="{{ item }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="toggle">
-					<van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item }}"> </van-checkbox>
-				</van-cell>
-			</van-cell-group>
-		</van-checkbox-group>
 
+<van-cell-group title="基础信息记录">
+	<van-cell title="头痛开始时间" is-link>
+		<view class="time-picker">
+			<picker mode="date" value="" start="2015-09-01" end="2022-09-01" bindchange="startDateChange">
+				<view>
+					{{start_date}}
+				</view>
+			</picker>
+			｜
+			<picker mode="time" value="" start="00:00" end="23:59" bindchange="startTimeChange">
+				<view>
+					{{start_time}}
+				</view>
+			</picker>
+		</view>
+	</van-cell>
+
+	<van-cell title="头痛结束时间" is-link>
+		<view class="time-picker">
+			<picker mode="date" value="" start="2015-09-01" end="2022-09-01" bindchange="endDateChange">
+				<view>
+					{{end_date}}
+				</view>
+			</picker>
+			｜
+			<picker mode="time" value="" start="00:00" end="23:59" bindchange="endTimeChange">
+				<view>
+					{{end_time}}
+				</view>
+			</picker>
+		</view>
+	</van-cell>
+
+	<van-cell title="疼痛等级" border="{{ false }} " label="1为轻度疼痛；达到2会影响睡眠；3会无法入睡；4为重度疼痛；5为剧痛">
+		<view>
+			<van-rate value="{{ pain_grade }}" size="{{ 19 }}" color="#ee0a24" void-color="#eee" void-icon="star" bind:change="rateChange" count="{{ 5 }}" />
+		</view>
+	</van-cell>
+
+	<van-checkbox-group value="{{ selection_rs }}" bind:change="selectChange">
 		<van-cell-group>
-			<van-field value="{{ message }}" label="推测头痛诱因:" type="textarea" placeholder=" 简短概括即可" autosize border="{{ true }}" class="a"/>
-			<van-field value="{{ message }}" label="备注:" type="textarea" placeholder="在这里填写其他想说的" autosize border="{{ true }}" />
+			<van-cell wx:for="{{ list }}" wx:key="index" title="{{ item }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="toggle">
+				<van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item }}"> </van-checkbox>
+			</van-cell>
 		</van-cell-group>
+	</van-checkbox-group>
 
-	</van-cell-group>
-
-	<timePicker pickerShow="{{isPickerShow}}" id="picker" wx:if="{{isPickerRender}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime" config="{{pickerConfig}}"></timePicker>
-	<view class="form-button">
-
-		<van-button type="primary" color="linear-gradient(to right, #4bb0ff, #6149f6)" block>
-			提交
-		</van-button>
-
+	<view class="cu-form-group align-start">
+		<view class="title">推测头痛诱因</view>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="guessInput" placeholder="简短概括即可"></textarea>
 	</view>
-</form>
+	<view class="cu-form-group align-start">
+		<view class="title">其他想说的</view>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="remarksInput" placeholder="再补充一些？"></textarea>
+	</view>
+
+</van-cell-group>
+
+<view class="form-button">
+	<button class="cu-btn bg-red margin-tb-sm lg" bindtap="submit">保存</button>
+</view>

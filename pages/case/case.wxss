@@ -1,1 +1,13 @@
 /* pages/case/case.wxss */
+
+.db{
+  margin-bottom: 120rpx;
+  height: 10rpx;
+  margin-top: 100rpx;
+}
+
+.record_list{
+  height: calc(100vh - 100rpx);
+  width: 100%;
+  background:#fff;
+}
