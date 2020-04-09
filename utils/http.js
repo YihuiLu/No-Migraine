@@ -7,6 +7,9 @@ class HTTP {
         if (!params.method) {
             params.method = "GET"
         };
+        if (params.loadProgress){
+            params.loadProgress()  
+        };
         wx.request({
             url: config.api_base_url + params.url,
             method: params.method,
@@ -15,13 +18,15 @@ class HTTP {
                 "content-type": "application/json",
                 "Authorization" : 'Basic ' + Base64.encode(wx.getStorageSync('login_data').token + ':')
             },
+            
             success: (res) => {
                 let code = res.statusCode.toString();
-                if (code == 1002 || code == 1003) {/** 如果监测到登录状态失效则自动重新登录 */
+                let error_code = res.data.error_code
+                if (error_code == 1002 || error_code == 1003) {/** 如果监测到登录状态失效则自动重新登录 */
+                    console.log('监测到登录状态失效，自动重新登录')
                     wx.login({
                         timeout: 5000,
                         success: (result) => {
-                            console.log(result);
                             this.request({
                                 url: '/v1/client/register',
                                 method: 'POST',
@@ -30,11 +35,14 @@ class HTTP {
                                     "type": 200
                                 },
                                 success: (res) => {
-                                    console.log(res)
                                     wx.setStorage({
                                         key: "login_data",
-                                        data: res
+                                        data: res,
+                                        success:(res) =>{
+                                            this.request(params)
+                                        }
                                     })
+
                                 }
                             })
                         },
@@ -46,18 +54,20 @@ class HTTP {
                 if (code.startsWith('2')) {
                     params.success(res.data)
                 } else {
-                    if (!res.msg) {
-                        res.msg = '哎呀，出现了一点小状况～'
+                    if (!res.data.msg) {
+                        res.data.msg = '哎呀，出现了一点小状况～'
                     }
-                    wx.showToast({
-                        title: res.msg,
-                        icon: 'none',
-                        image: '',
-                        duration: 2000,
-                        mask: false,
-                        success: (result) => {
-                        }
-                    });
+                    if(res.data.msg != 'token is invalid'){
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            image: '',
+                            duration: 2000,
+                            mask: false,
+                            success: (result) => {
+                            }
+                        });
+                    }
                 }
             },
             fail: (err) => {

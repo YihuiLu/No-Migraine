@@ -4,7 +4,9 @@ import {
   HTTP
 } from '../../utils/http.js'
 
-import {CaseModel} from '../../model/case_model.js'
+import {
+  CaseModel
+} from '../../model/case_model.js'
 
 let case_model = new CaseModel
 
@@ -91,6 +93,17 @@ Page({
     })
   },
 
+  clickTabBarSubmit: function () {
+    wx.navigateTo({
+      url: '../recording/recording'
+    })
+  },
+  clickTabBarCase: function () {
+    wx.redirectTo({
+      url: '../case/case'
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -102,10 +115,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTabBar().init();
     this.setData({
       show: true
     })
+    if (wx.canIUse('hideHomeButton')) {
+      wx.hideHomeButton()
+    }
   },
 
   /**

@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-popup": "@vant/weapp/popup",
     "van-button": "@vant/weapp/button",
-    "van-rate": "@vant/weapp/rate/index"
+    "van-rate": "@vant/weapp/rate/index",
+    "van-skeleton": "@vant/weapp/skeleton/index"
   },
   "enablePullDownRefresh": true
 }

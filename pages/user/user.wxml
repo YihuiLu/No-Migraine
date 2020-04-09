@@ -42,6 +42,23 @@
   <text class="userinfo-nickname">{{userInfo.nickName}}</text>
 </block> -->
 
+</view>
 
+<view class="cu-bar tabbar margin-bottom-xl bg-white" style="position:fixed; bottom:-50rpx;width: 750rpx;">
+	<view class="action" bindtap="clickTabBarCase">
+		<view class="cuIcon-rank"></view> 记录
+	</view>
+
+	<view class="action text-gray add-action" bindtap="clickTabBarSubmit">
+		<button class="cu-btn cuIcon-add bg-blue shadow"></button>
+		提交
+	</view>
+
+	<view class="action text-gray" >
+		<view class="cuIcon-my text-blue">
+			<view class="cu-tag badge"></view>
+		</view>
+		我的
+	</view>
 
 </view>

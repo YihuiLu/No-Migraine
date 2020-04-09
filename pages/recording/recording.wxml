@@ -9,7 +9,7 @@
 				</view>
 			</picker>
 			｜
-			<picker mode="time" value="" start="00:00" end="23:59" bindchange="startTimeChange">
+			<picker mode="time" value="12:00" start="00:00" end="23:59" bindchange="startTimeChange">
 				<view>
 					{{start_time}}
 				</view>
@@ -25,7 +25,7 @@
 				</view>
 			</picker>
 			｜
-			<picker mode="time" value="" start="00:00" end="23:59" bindchange="endTimeChange">
+			<picker mode="time" value="12:00" start="00:00" end="23:59" bindchange="endTimeChange">
 				<view>
 					{{end_time}}
 				</view>
@@ -35,7 +35,7 @@
 
 	<van-cell title="疼痛等级" border="{{ false }} " label="1为轻度疼痛；达到2会影响睡眠；3会无法入睡；4为重度疼痛；5为剧痛">
 		<view>
-			<van-rate value="{{ pain_grade }}" size="{{ 19 }}" color="#ee0a24" void-color="#eee" void-icon="star" bind:change="rateChange" count="{{ 5 }}" />
+			<van-rate value="{{ pain_grade }}" size="{{ 19 }}" color="#ee0a24" void-color="#eee" void-icon="star" bind:change="rateChange" count="{{ 5 }}"></van-rate>
 		</view>
 	</van-cell>
 
@@ -61,3 +61,4 @@
 <view class="form-button">
 	<button class="cu-btn bg-red margin-tb-sm lg" bindtap="submit">保存</button>
 </view>
+

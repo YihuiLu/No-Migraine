@@ -2,9 +2,9 @@
   "pages": [
     "pages/case/case",
     "pages/recording/recording",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/case/case-detail/case-detail"
   ],
-
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -19,20 +19,5 @@
     "van-tabbar": "@vant/weapp/tabbar",
     "van-tabbar-item": "@vant/weapp/tabbar-item",
     "van-dialog": "@vant/weapp/dialog/index"
-  },
-  
-  "tabBar": {
-    "custom": true,
-    "color": "#000000",
-    "selectedColor": "#000000",
-    "backgroundColor": "#000000",
-    "list": [{
-      "pagePath": "pages/case/case"
-    }, {
-      "pagePath": "pages/recording/recording"
-    }, {
-      "pagePath": "pages/user/user"
-    }]
   }
-
 }

@@ -1,13 +1,14 @@
 /* pages/case/case.wxss */
 
-.db{
-  margin-bottom: 120rpx;
-  height: 10rpx;
-  margin-top: 100rpx;
+.db {
+    margin-bottom: 80rpx;
+    height: 70rpx;
+    margin-top: 90rpx;
 }
 
-.record_list{
-  height: calc(100vh - 100rpx);
-  width: 100%;
-  background:#fff;
+.record_list {
+    height: calc(100vh - 100rpx);
+    width: 100%;
+    background: #fff;
 }
+

@@ -3,10 +3,17 @@ import {
   HTTP
 } from '../../utils/http.js'
 
+import { T_Time } from '../../utils/times.js'
 
-var now_time = new Date()
-var t_s = now_time.getTime()
+
+let now_time = new Date()
+let t_time = new T_Time
 let http = new HTTP()
+
+
+let start_time = now_time.getHours()+':'+ t_time.minutes()
+let start_date = now_time.getFullYear() + '-' + (Number(now_time.getMonth())+ 1) + '-' + now_time.getDate()
+
 
 Page({
 
@@ -21,11 +28,11 @@ Page({
     selection_rs: [],
 
     /** 头痛时间选择 */
-    start_time: '12:00',
-    start_date: '2020-1-1',
+    start_time: start_time,
+    start_date: start_date,
 
-    end_time: '12:00',
-    end_date: '2020-1-1',
+    end_time: start_time,
+    end_date: start_date,
     /** 头痛时间选择 */
 
     guess: '',
@@ -126,16 +133,13 @@ Page({
         "rest": rest
       },
       success: (res) => {
-        that.setData({/** 恢复默认数据（学艺不精，只能用蠢方法） */
-          selection_rs: [],
-        })
         wx.hideLoading()
         wx.showToast({
           title: '提交成功',
           icon: 'success',
           duration: 2000,
           success(){
-            wx.switchTab({
+            wx.redirectTo({
               url: '../case/case'
             })
           }
@@ -170,7 +174,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTabBar().init();
+    // this.getTabBar().init();
   },
 
   /**
