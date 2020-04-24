@@ -1,0 +1,57 @@
+<!--pages/user/user_info/user_info.wxml-->
+<van-cell-group title="个人基础信息，后期将会用于为您生成头痛报告">
+</van-cell-group>
+
+<view class="cu-form-group">
+	<view class="title">近期平均发作频率（年/次）</view>
+	<van-stepper value="{{ user_info.user_info.frequency || 1 }}" bind:change="FrequencyChange" />
+</view>
+<view class="cu-form-group">
+	<view class="title">出生日期</view>
+	<picker mode="date" value="{{user_info.user_info.birthday}}" start="1970-09-01" end="2025-09-01" bindchange="BirthdayChange">
+		<view class="picker">
+			{{user_info.user_info.birthday?user_info.user_info.birthday:'未填写'}}
+		</view>
+	</picker>
+</view>
+<view class="cu-form-group">
+	<view class="title">首次头痛时间</view>
+	<picker mode="date" value="{{user_info.user_info.first_appearance}}" start="1970-01-01" end="2022-01-01" bindchange="firstAppearanceChange">
+		<view class="picker">
+			{{user_info.user_info.first_appearance || '未填写'}}
+		</view>
+	</picker>
+</view>
+<view class="cu-form-group">
+	<view class="title">常住地域</view>
+	<picker mode="region" bindchange="RegionChange" value="{{user_info.user_info.hometown}}" custom-item="{{customItem}}">
+		<view class="picker" wx:if="{{user_info.user_info.hometown}}">
+			{{user_info.user_info.hometown[0]}}，{{user_info.user_info.hometown[1]}}，{{user_info.user_info.hometown[2]}}
+		</view>
+		<view class="picker" wx:else>
+			未填写
+		</view>
+	</picker>
+</view>
+<view class="cu-form-group">
+	<view class="title">民族</view>
+	<picker bindchange="ethnicChange" value="{{user_info.user_info.ethnic}}" range="{{picker}}">
+		<view class="picker">
+			{{user_info.user_info.ethnic?user_info.user_info.ethnic:'未填写'}}
+		</view>
+	</picker>
+</view>
+
+<view class="cu-form-group margin-top">
+	<view class="title">性别</view>
+	<view>
+		{{user_info.user.gender == 2 ? '女': user_info.user.gender == 1 ? '男' : '未知'}}
+	</view>
+</view>
+
+
+<van-divider contentPosition="center">一条低调的分割线</van-divider>
+
+<view class="alert">
+	<text>你在{{user_info.user.create_time}}加入头痛记，是头痛记的第{{user_info.user.id - 3}}位用户</text>
+</view>

@@ -1,0 +1,39 @@
+<!--pages/user/about/about.wxml-->
+
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>关于头痛记小程序</view>
+  <view class='text-content'>
+    <view class='margin-top-sm'>  Hi~ 我是头痛记作者一灰,很高兴能在这里见到你。</view>
+    <view class='margin-top-sm'>  头痛记是我自己设计、编写的免费程序，在偏头痛尚不能有效治愈的今天，良好的自我管理、自我认知和头痛记录是预防和缓解头痛的有效出口，这也是我编写这个程序的主要原因。
+                                  </view>
+    <view class="margin-top-sm"> 从我开始关注偏头痛至今已经有三年，这个程序则是我们一起努力过的最好证明，希望在未来的日子里头痛记能一直陪伴着你。</view>
+    <view class="margin-top-sm"> 鸣谢：ColorUI（本程序大量使用了此组件库样式），同时感谢我的朋友们，感谢你们的鼓励和支持！</view>
+  </view>
+</view>
+
+<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <view class="content" bindtap="CopyLink" data-link="https://github.com/YihuiLu/No-Migraine">
+        <text class="cuIcon-github text-grey"></text>
+        <text class="text-grey">GitHub</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="log/log" hover-class="none">
+        <text class="cuIcon-formfill text-green"></text>
+        <text class="text-grey">更新日志</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <view class="content" bindtap="showQrcode">
+        <text class="cuIcon-appreciatefill text-red"></text>
+        <text class="text-grey">赞赏支持</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content" open-type="contact">
+        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="text-grey">意见反馈</text>
+      </button>
+    </view>
+  </view>

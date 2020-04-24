@@ -1,4 +1,4 @@
-// pages/case/case-detail/case-detail.js
+// pages/user/about/about.js
 Page({
 
   /**
@@ -8,12 +8,30 @@ Page({
 
   },
 
+  CopyLink(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.link,
+      success: res => {
+        wx.showToast({
+          title: '已复制',
+          duration: 1000,
+        })
+      }
+    })
+  },
+
+  showQrcode(){
+    wx.previewImage({
+      urls: ['https://api.toutongji.com/img/zs.jpg'],
+      current: 'https://api.toutongji.com/img/zs.jpg' // 当前显示图片的http链接      
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var case_id = options.id
-    console.log('接收到id='+case_id)
+
   },
 
   /**

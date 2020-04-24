@@ -1,0 +1,11 @@
+<!--pages/user/join/join.wxml-->
+
+<view class=' container margin-xl bg-white padding-xl radius shadow-lg '>
+  <view class='text'>
+		<text selectable="true" >请加QQ群：632828364</text>
+	</view>
+	
+  <text>长按可复制或保存文字和图片</text>
+
+	<van-image width="20rem" height="20rem" fit="contain" src="/image/qq.jpg"  data-url="/image/qq.jpg" bindlongpress="saveImg"/>
+</view>

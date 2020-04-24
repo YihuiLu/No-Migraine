@@ -1,0 +1,11 @@
+/* pages/user/user_info/user_info.wxss */
+
+page{
+  background-color: #eeeeee;
+}
+
+.alert{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

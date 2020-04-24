@@ -1,7 +1,5 @@
 // pages/case/case.js
-import {
-    CaseModel
-} from '../../model/case_model.js'
+
 import {
     HTTP
 } from '../../utils/http.js'
@@ -9,8 +7,6 @@ import {
 
 let http = new HTTP();
 const app = getApp();
-let case_model = new CaseModel;
-let now_time = new Date()
 
 
 Page({
@@ -31,6 +27,15 @@ Page({
         loging: true
     },
 
+    case_info: function (event) {
+        let id = event.currentTarget.dataset.id
+        wx.navigateTo({
+            url: 'case-detail/case-detail?id=' + id
+        })
+
+        console.log('点击事件,id='+id)
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -38,8 +43,8 @@ Page({
         let that = this
 
         http.request({
-            url: '/v1/record',
-            method: 'GET',
+            url: '/v1/record/epitome',
+            method: 'POST',
             data: {
                 "current_page": 1,
             },
@@ -96,11 +101,11 @@ Page({
         if (wx.canIUse('hideHomeButton')) {
             wx.hideHomeButton()
         }
-        if (wx.getStorageSync('login_data'  && that.refresh === 1)){
+        if (wx.getStorageSync('login_data' && that.refresh === 1)) {
             console.log('监听到页面显示， 刷新数据')
             http.request({
-                url: '/v1/record',
-                method: 'GET',
+                url: '/v1/record/epitome',
+                method: 'POST',
                 data: {
                     "current_page": 1,
                 },
@@ -116,85 +121,85 @@ Page({
             })
         }
 
-},
+    },
 
 
-clickTabBarSubmit: function () {
-    wx.navigateTo({
-        url: '../recording/recording'
-    })
-},
-clickTabBarUser: function () {
-    wx.redirectTo({
-        url: '../user/user'
-    })
-},
-/**
- * 生命周期函数--监听页面隐藏
- */
-onHide: function () {
-    this.setData({
-        refresh: 1
-    })
-},
+    clickTabBarSubmit: function () {
+        wx.navigateTo({
+            url: '../recording/recording'
+        })
+    },
+    clickTabBarUser: function () {
+        wx.redirectTo({
+            url: '../user/user'
+        })
+    },
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function () {
+        this.setData({
+            refresh: 1
+        })
+    },
 
-/**
- * 生命周期函数--监听页面卸载
- */
-onUnload: function () {
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function () {
 
-},
+    },
 
-/**
- * 页面相关事件处理函数--监听用户下拉动作
- */
-onPullDownRefresh: function (option) {
-    http.request({
-        url: '/v1/record',
-        method: 'GET',
-        data: {
-            "current_page": 1,
-        },
-        success: (res) => {
-            this.setData({
-                record_data: res
-            })
-            console.log('用户下拉' + res);
-            wx.stopPullDownRefresh(option)
-        }
-    })
-},
-
-/**
- * 页面上拉触底事件的处理函数
- */
-onReachBottom: function (option) {
-    wx.showLoading({
-        title: '努力加载中...',
-    });
-    var that = this
-    http.request({
-        url: '/v1/record',
-        method: 'GET',
-        data: {
-            "current_page": that.data.current_page + 1,
-        },
-        success: (res) => {
-            if (res.length > 0) {
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function (option) {
+        http.request({
+            url: '/v1/record/epitome',
+            method: 'POST',
+            data: {
+                "current_page": 1,
+            },
+            success: (res) => {
                 this.setData({
-                    current_page: that.data.current_page + 1,
-                    record_data: that.data.record_data.concat(res)
+                    record_data: res
                 })
+                console.log('用户下拉' + res);
+                wx.stopPullDownRefresh(option)
             }
-            wx.hideLoading(option);
-        }
-    })
-},
+        })
+    },
 
-/**
- * 用户点击右上角分享
- */
-onShareAppMessage: function () {
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function (option) {
+        wx.showLoading({
+            title: '努力加载中...',
+        });
+        var that = this
+        http.request({
+            url: '/v1/record/epitome',
+            method: 'GET',
+            data: {
+                "current_page": that.data.current_page + 1,
+            },
+            success: (res) => {
+                if (res.length > 0) {
+                    this.setData({
+                        current_page: that.data.current_page + 1,
+                        record_data: that.data.record_data.concat(res)
+                    })
+                }
+                wx.hideLoading(option);
+            }
+        })
+    },
 
-}
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
+
+    }
 })

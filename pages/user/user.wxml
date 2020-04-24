@@ -1,3 +1,4 @@
+
 <view>
 	<view class='user-info'>
 		<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
@@ -5,19 +6,19 @@
 	</view>
 	<view class='userinfo-cell'></view>
 	<van-cell-group>
-		<van-cell title="个人资料" value="" is-link />
-		<van-cell title="知识库" value="更多偏头痛资料" is-link />
+		<van-cell title="个人资料" bindtap="clickUserInfo" is-link />
+		<van-cell title="知识库" value="更多偏头痛资料" is-link bindtap="clickLore" />
 	</van-cell-group>
 
 	<view class='userinfo-cell'></view>
 	<van-cell-group>
-		<van-cell title="加入头痛记大家庭～" value="QQ群和微信群" is-link />
+		<van-cell title="加入头痛记大家庭～" value="QQ群和微信群" is-link bindtap="clickJoin" />
 	</van-cell-group>
 
 	<view class='userinfo-cell'></view>
 	<van-cell-group>
-		<van-cell title="关于头痛记" value="" is-link />
-		<van-cell title="联系我们" value="isRichard.Lu@gmail.com" is-link />
+		<van-cell title="关于头痛记" value="" is-link bindtap="clickAbout" />
+		<van-cell title="联系作者" value="isRichard.Lu@gmail.com" is-link />
 	</van-cell-group>
 
 	<view wx:if="{{!hasUserInfo && canIUse}}" class="get-info">
@@ -28,7 +29,7 @@
 
 		<van-dialog use-slot title="登录提示" show="{{ show }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo">
 			<!-- <image src="https://img.yzcdn.cn/1.jpg" /> -->
-			<text class="login-alert">竟然还没有登录，点击确认进行登录吧～</text>
+			<text class="login-alert">竟然还没有登录，点击确认即可自动登录～</text>
 			<!-- <view class="alert">
 				
 			</view> -->

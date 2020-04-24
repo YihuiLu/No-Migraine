@@ -11,14 +11,14 @@
 			<view class="cu-time" wx:if="{{record_data[idx-1].date != item.date}}">{{item.date}}</view>
 
 
-      <view class="cu-item text-blue" wx:if="{{item.none === 1}}">
+      		<view class="cu-item text-blue" wx:if="{{item.none === 1}}">
 				<view class="bg-blue content">
 					<text>还没有头痛记录哦～</text>
 				</view>
 			</view>
 
 
-			<view class="cu-item" wx:elif="{{item.cause != '' && item.id}}">
+			<view class="cu-item" wx:elif="{{item.cause != '' && item.id}}" catchtap="case_info" data-id="{{item.id}}">
 				<view class="content">
 					<view class="cu-capsule radius">
 						<view class="cu-tag bg-cyan">{{item.time.stage}}</view>
@@ -89,7 +89,7 @@
 				</view>
 			</view>
 		</block>
-			<view class="db" wx:if="{{record_data.length > 1}}"></view>
+		<view class="db" wx:if="{{record_data.length > 1}}"></view>
 	</view>
 
 

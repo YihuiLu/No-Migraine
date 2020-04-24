@@ -1,4 +1,4 @@
-// pages/case/case-detail/case-detail.js
+// pages/user/join/join.js
 Page({
 
   /**
@@ -8,12 +8,32 @@ Page({
 
   },
 
+  saveImg(e) {
+    let url = e.currentTarget.dataset.url;
+    console.log(url)
+    wx.saveImageToPhotosAlbum({
+      filePath: url,
+      success(res) {
+        wx.showToast({
+          title: "已保存至您的相册～",
+          icon: 'none',
+          image: '',
+          duration: 2000,
+          mask: false,
+          success: (result) => {}
+        });
+      },
+      fail(res) {
+        console.log(res);
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var case_id = options.id
-    console.log('接收到id='+case_id)
+
   },
 
   /**

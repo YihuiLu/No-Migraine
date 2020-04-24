@@ -1,1 +1,130 @@
 /* pages/case/case-detail/case-detail.wxss */
+page {
+  background-color: #efefef;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bg {
+  margin-top: 15rpx;
+  /* width: 630rpx; */
+  width: 97%;
+  height: 630rpx;
+  background: #ffffff;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.26);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg2 {
+  margin-top: 15rpx;
+  /* width: 630rpx; */
+  width: 97%;
+  height: auto;
+  background: #ffffff;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.26);
+  border-radius: 8px;
+  /* margin-bottom: 115rpx; */
+}
+
+.tag {
+  width: 46rpx;
+  height: 46rpx;
+  position: absolute;
+  top: 8rpx;
+  left: -3rpx;
+}
+
+.round {
+  width: 320rpx;
+  height: 320rpx
+}
+
+.round_view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.text_view {
+  display: flex;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  flex-direction: column;
+}
+
+.day {
+  font-size: 65rpx;
+}
+
+.data {
+  font-size: 25rpx;
+  margin-left: 8rpx;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.line {
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  border-top: 1px dashed #C0C0C0;
+  width: 80rpx;
+}
+
+.right_angle {
+  width: 90rpx;
+  height: 40rpx;
+  border-style: solid;
+  border-width: 1px;
+  border-top-color: #45BDFC;
+  border-left-color: #45BDFC;
+  border-right-color: #ffffff;
+  border-bottom: #ffffff;
+  transform: translate(50rpx, -10rpx);
+}
+
+.point {
+  width: 10rpx;
+  height: 10rpx;
+  background: #45BDFC;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  transform: translate(100rpx, -4rpx);
+}
+
+.round_text {
+  transform: translate(160rpx, 15rpx);
+  font-size: 20rpx;
+  color: #45BDFC;
+}
+
+.rating_view {
+  position:absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150rpx;
+  /* font-family:Arial,Helvetica,sans-serif; */
+}
+
+.rating {
+  font-size: 110rpx;
+  color: #45BDFC;
+  transform: translate(0rpx, 15rpx);
+}
+
+.level {
+  font-size: 23rpx;
+  color: #45BDFC;
+  transform: translate(0rpx, 1rpx);
+}
+
+.button-view{
+  width: 80%;
+}

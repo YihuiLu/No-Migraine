@@ -4,12 +4,6 @@ import {
   HTTP
 } from '../../utils/http.js'
 
-import {
-  CaseModel
-} from '../../model/case_model.js'
-
-let case_model = new CaseModel
-
 const app = getApp()
 let http = new HTTP()
 
@@ -101,6 +95,35 @@ Page({
   clickTabBarCase: function () {
     wx.redirectTo({
       url: '../case/case'
+    })
+  },
+
+  clickLore: function () {
+    wx.showToast({
+      title: "正在努力开发中...",
+      icon: 'none',
+      image: '',
+      duration: 2000,
+      mask: false,
+      success: (result) => {}
+    });
+  },
+
+  clickJoin: function () {
+    wx.navigateTo({
+      url: 'join/join'
+    })
+  },
+
+  clickAbout: function() {
+    wx.navigateTo({
+      url: 'about/about'
+    })
+  },
+
+  clickUserInfo: function() {
+    wx.navigateTo({
+      url: 'user_info/user_info'
     })
   },
 

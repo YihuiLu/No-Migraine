@@ -1,4 +1,4 @@
-// pages/case/case-detail/case-detail.js
+// pages/user/lore/lore.js
 Page({
 
   /**
@@ -12,8 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var case_id = options.id
-    console.log('接收到id='+case_id)
+
   },
 
   /**

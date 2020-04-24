@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-divider": "@vant/weapp/divider/index"
+  }
+}

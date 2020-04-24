@@ -1,5 +1,4 @@
 
-
 <van-cell-group title="基础信息记录">
 	<van-cell title="头痛开始时间" is-link>
 		<view class="time-picker">
@@ -33,11 +32,15 @@
 		</view>
 	</van-cell>
 
-	<van-cell title="疼痛等级" border="{{ false }} " label="1为轻度疼痛；达到2会影响睡眠；3会无法入睡；4为重度疼痛；5为剧痛">
+	<van-cell title="疼痛等级" border="{{ false }} " >
 		<view>
 			<van-rate value="{{ pain_grade }}" size="{{ 19 }}" color="#ee0a24" void-color="#eee" void-icon="star" bind:change="rateChange" count="{{ 5 }}"></van-rate>
 		</view>
+		<view class="solid-bottom text-xs bg-white">
+		<text class="text-gray">1为轻度疼痛，达到2会影响睡眠，3会无法入睡，4为重度疼痛，5为剧痛</text>
+	</view>
 	</van-cell>
+	
 
 	<van-checkbox-group value="{{ selection_rs }}" bind:change="selectChange">
 		<van-cell-group>
@@ -48,12 +51,12 @@
 	</van-checkbox-group>
 
 	<view class="cu-form-group align-start">
-		<view class="title">推测头痛诱因</view>
-		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="guessInput" placeholder="简短概括即可"></textarea>
+		<view class="title">推测头痛诱因：</view>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="guessInput" placeholder=""></textarea>
 	</view>
 	<view class="cu-form-group align-start">
-		<view class="title">其他想说的</view>
-		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="remarksInput" placeholder="再补充一些？"></textarea>
+		<view class="title">其他想说的：</view>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="remarksInput" placeholder=""></textarea>
 	</view>
 
 </van-cell-group>

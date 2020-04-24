@@ -1,0 +1,12 @@
+/* pages/user/join/join.wxss */
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text{
+  margin-top: 60rpx;
+  font-size: 40rpx;
+}
