@@ -4,29 +4,28 @@
 	<view class="bg">
     <image class="tag" src="../../../image/tt_03.png"></image>
     <view class="text_view">
-      <text class="day">16</text>
-      <text class="data">2020/04 周四 17:25</text>
+      <text class="day">{{record_info.day}}</text>
+      <text class="data">{{record_info.f_time}}</text>
+      <!-- <text class="data">2020/04 周四 17:25</text> -->
       <view class="line"></view>
     </view>
     <view class="round_view">
-      <text class="round_text">三级疼痛</text>
+      <text class="round_text">{{record_info.pain_grade}}</text>
       <view class="point"></view>
       <view class="right_angle"></view>
       <image class="round" src="../../../image/tt_07.png"></image>
       <view class="rating_view">
-        <text class="rating">03</text>
-        <text class="level">轻度</text>
+        <text class="rating">{{record_info.pain_grade_raking}}</text>
+        <text class="level">{{record_info.raking_explain}}</text>
       </view>
     </view>
 	</view>
   <view class="bg2">
     <view style="margin-top: 10rpx; margin-bottom: 10rpx">
-      <van-cell title="是否服用药物" value="是" />
-      <van-cell title="是否得到休息" value="是" />
-      <van-cell title="是否服用药物" value="是" />
-      <van-cell title="是否得到休息" value="是" />
-      <van-cell title="是否服用药物" value="是" />
-      <van-cell title="是否得到休息" value="是" />
+      <van-cell title="是否服用药物" value="{{record_info.taking_medicine}}" />
+      <van-cell title="是否得到休息" value="{{record_info.rest}}" />
+      <van-cell title="推测诱因" value="{{record_info.cause}}" />
+      <van-cell title="补充信息" value="{{record_info.remarks}}" />
     </view>
   </view>
 </view>
