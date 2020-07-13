@@ -28,6 +28,7 @@ Page({
                 that.setData({
                     record_info: res
                 })
+                console.log(res)
             }
         })
     },
