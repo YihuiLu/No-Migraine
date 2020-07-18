@@ -1,0 +1,25 @@
+/* pages/case/case-detail/case-detail-update.wxss */
+
+.select_time{
+  text-align: right;
+  width: 35;
+}
+
+.value-class {
+  flex: none !important;
+}
+
+.form-button{
+  margin-top: 30rpx;
+  margin-bottom: 100rpx;
+  display: flex;
+  flex-direction: column;
+}
+/* .a .van-cell__value{
+  min-height: 200rpx;
+} */
+.time-picker{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}

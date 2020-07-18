@@ -8,13 +8,13 @@
     "pages/user/about/about",
     "pages/user/lore/lore",
     "pages/user/join/join",
-    "pages/user/about/log/log"
-    
+    "pages/user/about/log/log",
+    "pages/case/case-detail/case-detail-update/case-detail-update"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "头痛记（demo版）",
+    "navigationBarTitleText": "头痛记",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
