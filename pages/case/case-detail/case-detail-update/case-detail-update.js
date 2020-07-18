@@ -1,9 +1,9 @@
-// pages/recording/recording.js
+// pages/case/case-detail/case-detail-update.js
 import {
     HTTP
-} from '../../utils/http.js'
+} from '../../../../utils/http.js'
 
-import {T_Time} from '../../utils/times.js'
+import {T_Time} from '../../../../utils/times.js'
 
 
 let now_time = new Date()
@@ -36,10 +36,7 @@ Page({
         /** 头痛时间选择 */
 
         guess: '',
-        remarks: '',
-        is_update: 0,
-
-        now_time: start_time
+        remarks: ''
     },
 
 
@@ -97,8 +94,7 @@ Page({
 
     endTimeChange(e) {
         this.setData({
-            end_time: e.detail.value,
-            is_update: 1
+            end_time: e.detail.value
         })
     },
 
@@ -113,61 +109,47 @@ Page({
 
     submit(e) {
         let that = this;
-
-        if (that.data.is_update > 0) {
-            if (that.data.selection_rs.includes('我在头痛后服用了药物')) {
-                var taking_medicine = 1
-            } else {
-                var taking_medicine = 0
-            }
-            if (that.data.selection_rs.includes('我在头痛后得到了良好休息或去了医院')) {
-                var rest = 1
-            } else {
-                var rest = 0
-            }
-            wx.showLoading({title: '提交中…'})
-            http.request({
-                url: '/v1/record',
-                method: 'POST',
-                data: {
-                    "start_time": that.data.start_date + ' ' + that.data.start_time,
-                    "end_time": that.data.end_date + ' ' + that.data.end_time,
-                    "cause": that.data.guess,
-                    "remarks": that.data.remarks,
-                    "pain_grade": that.data.pain_grade,
-                    "taking_medicine": taking_medicine,
-                    "rest": rest
-                },
-                success: (res) => {
-                    wx.hideLoading()
-                    wx.showToast({
-                        title: '提交成功',
-                        icon: 'success',
-                        duration: 2000,
-                        success() {
-                            wx.redirectTo({
-                                url: '../case/case'
-                            })
-                        }
-                    })
-                },
-                fail: (res) => {
-                    wx.hideLoading()
-                    wx.showToast({
-                        title: '提交失败了...检查网络再试一次吧～',
-                        icon: 'fail',
-                        duration: 2000
-                    })
-                }
-            })
+        if (that.data.selection_rs.includes('我在头痛后服用了药物')) {
+            var taking_medicine = 1
         } else {
-            wx.showToast({
-                title: '请认真填写',
-                icon: 'none',
-                duration: 2000
-            })
+            var taking_medicine = 0
         }
-
+        if (that.data.selection_rs.includes('我在头痛后得到了良好休息或去了医院')) {
+            var rest = 1
+        } else {
+            var rest = 0
+        }
+        wx.showLoading({title: '修改中…'})
+        http.request({
+            url: '/v1/record/update',
+            method: 'POST',
+            data: {
+                "start_time": that.data.start_date + ' ' + that.data.start_time,
+                "end_time": that.data.end_date + ' ' + that.data.end_time,
+                "cause": that.data.guess,
+                "remarks": that.data.remarks,
+                "pain_grade": that.data.pain_grade,
+                "taking_medicine": taking_medicine,
+                "rest": rest,
+                "id": that.data.id
+            },
+            success: (res) => {
+                wx.hideLoading()
+                wx.showToast({
+                    title: '修改成功',
+                    icon: 'success',
+                    duration: 2000,
+                })
+            },
+            fail: (res) => {
+                wx.hideLoading()
+                wx.showToast({
+                    title: '修改失败了...检查网络再试一次吧!',
+                    icon: 'fail',
+                    duration: 2000
+                })
+            }
+        })
     },
 
 
@@ -175,7 +157,19 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        let that = this
+        var case_id = options.id
+        console.log(case_id)
+        http.request({
+            url: '/v1/record/details/info',
+            method: 'POST',
+            data: {
+                "id": case_id,
+            },
+            success: (res) => {
+                that.setData(res)
+            }
+        })
     },
 
     /**

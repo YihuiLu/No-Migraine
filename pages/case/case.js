@@ -32,15 +32,32 @@ Page({
         wx.navigateTo({
             url: 'case-detail/case-detail?id=' + id
         })
-
-        console.log('点击事件,id='+id)
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let that = this
+        
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+        this.setData({
+            loadProgress: 20
+        })
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+        let that = this;
+        if (wx.canIUse('hideHomeButton')) {
+            wx.hideHomeButton()
+        }
 
         http.request({
             url: '/v1/record/epitome',
@@ -81,46 +98,6 @@ Page({
                 })
             }
         })
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-        this.setData({
-            loadProgress: 20
-        })
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-        let that = this;
-        if (wx.canIUse('hideHomeButton')) {
-            wx.hideHomeButton()
-        }
-        if (wx.getStorageSync('login_data' && that.refresh === 1)) {
-            console.log('监听到页面显示， 刷新数据')
-            http.request({
-                url: '/v1/record/epitome',
-                method: 'POST',
-                data: {
-                    "current_page": 1,
-                },
-                success: (res) => {
-                    if (res.length > 0) {
-                        that.setData({
-                            record_data: res,
-                            loadProgress: 100,
-                            loging: false
-                        })
-                    }
-                }
-            })
-        }
-
     },
 
 

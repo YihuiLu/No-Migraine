@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-datetime-picker": "@vant/weapp/datetime-picker",
+    "van-cell": "@vant/weapp/cell/",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "timePicker": "../../../utils/components/timePicker/timePicker",
+    "van-rate": "@vant/weapp/rate/",
+    "van-radio": "@vant/weapp/radio",
+    "van-radio-group": "@vant/weapp/radio-group",
+    "van-checkbox": "@vant/weapp/checkbox",
+    "van-checkbox-group": "@vant/weapp/checkbox-group",
+    "van-field": "/@vant/weapp/field"
+  }
+}

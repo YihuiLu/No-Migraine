@@ -1,5 +1,6 @@
+<!--pages/case/case-detail/case-detail-update.wxml-->
 
-<van-cell-group title="基础信息记录">
+<van-cell-group title="头痛记录修改">
 	<van-cell title="头痛开始时间" is-link>
 		<view class="time-picker">
 			<picker mode="date" value="" start="2015-09-01" end="2022-09-01" bindchange="startDateChange">
@@ -8,7 +9,7 @@
 				</view>
 			</picker>
 			｜
-			<picker mode="time" value="{{now_time}}" start="00:00" end="23:59" bindchange="startTimeChange">
+			<picker mode="time" value="12:00" start="00:00" end="23:59" bindchange="startTimeChange">
 				<view>
 					{{start_time}}
 				</view>
@@ -24,7 +25,7 @@
 				</view>
 			</picker>
 			｜
-			<picker mode="time" value="{{now_time}}" start="00:00" end="23:59" bindchange="endTimeChange">
+			<picker mode="time" value="12:00" start="00:00" end="23:59" bindchange="endTimeChange">
 				<view>
 					{{end_time}}
 				</view>
@@ -61,7 +62,7 @@
 
 </van-cell-group>
 
-<view class="padding flex flex-direction">
-	<button class="cu-btn bg-red margin-tb-sm lg" bindtap="submit">保存</button>
+<view class="form-button">
+	<button class="cu-btn bg-red margin-tb-sm lg" bindtap="submit">保存修改</button>
 </view>
 

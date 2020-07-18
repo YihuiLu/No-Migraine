@@ -1,21 +1,20 @@
 {
   "pages": [
-    "pages/case/case-detail/case-detail",
     "pages/case/case",
     "pages/user/user_info/user_info",
     "pages/recording/recording",
     "pages/user/user",
-
+    "pages/case/case-detail/case-detail",
     "pages/user/about/about",
     "pages/user/lore/lore",
     "pages/user/join/join",
-    "pages/user/about/log/log"
-    
+    "pages/user/about/log/log",
+    "pages/case/case-detail/case-detail-update/case-detail-update"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "头痛记（demo版）",
+    "navigationBarTitleText": "头痛记",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
