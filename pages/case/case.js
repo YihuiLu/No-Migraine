@@ -16,15 +16,14 @@ Page({
      */
     data: {
         current_page: 1,
-        record_data: [{
-            "none": 0,
-        }],
+        record_data: [],
         refresh: 0,
         loadProgress: 0,
 
         CustomBar: app.globalData.CustomBar,
 
-        loging: true
+        loging: true,
+        show_skeleton: false,
     },
 
     case_info: function (event) {
@@ -32,13 +31,15 @@ Page({
         wx.navigateTo({
             url: 'case-detail/case-detail?id=' + id
         })
+
+        console.log('点击事件,id='+id)
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
+
     },
 
     /**
@@ -68,7 +69,8 @@ Page({
             loadProgress() {
                 /** 条形进度条 */
                 that.setData({
-                    loadProgress: this.data.loadProgress + 3
+                    loadProgress: this.data.loadProgress + 3,
+                    show_skeleton: true
                 })
                 if (that.data.loadProgress < 100) {
                     setTimeout(() => {
@@ -81,20 +83,16 @@ Page({
                 }
             },
             success: (res) => {
+                console.log(res)
                 if (res.length > 0) {
                     that.setData({
                         record_data: res
                     })
-                } else {
-                    that.setData({
-                        record_data: [{
-                            none: 1
-                        }]
-                    })
                 }
                 that.setData({
                     loadProgress: 100,
-                    loging: false
+                    loging: false,
+                    show_skeleton: false
                 })
             }
         })

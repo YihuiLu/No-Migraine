@@ -39,7 +39,8 @@ Page({
         remarks: '',
         is_update: 0,
 
-        now_time: start_time
+        now_time: start_time,
+        now_date: start_date
     },
 
 

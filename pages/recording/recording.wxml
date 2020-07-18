@@ -2,7 +2,7 @@
 <van-cell-group title="基础信息记录">
 	<van-cell title="头痛开始时间" is-link>
 		<view class="time-picker">
-			<picker mode="date" value="" start="2015-09-01" end="2022-09-01" bindchange="startDateChange">
+			<picker mode="date" value="{{now_date}}" start="2015-09-01" end="2022-09-01" bindchange="startDateChange">
 				<view>
 					{{start_date}}
 				</view>
@@ -18,7 +18,7 @@
 
 	<van-cell title="头痛结束时间" is-link>
 		<view class="time-picker">
-			<picker mode="date" value="" start="2015-09-01" end="2022-09-01" bindchange="endDateChange">
+			<picker mode="date" value="{{now_date}}" start="2015-09-01" end="2022-09-01" bindchange="endDateChange">
 				<view>
 					{{end_date}}
 				</view>

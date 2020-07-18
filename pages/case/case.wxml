@@ -2,119 +2,118 @@
 
 <view class="record_list">
 
-	<van-skeleton title avatar row="3" wx:if = "{{!record_data[0].id}}" wx:for = "{{5}}"/>
+    <van-skeleton title avatar row="3" wx:if="{{show_skeleton}}" wx:for="{{5}}"/>
 
-	<view class="cu-timeline">
+    <view class="cu-timeline">
+        <view class="cu-time" wx:if="{{record_data.length < 1}}">今天</view>
+        <view class="cu-item text-blue" wx:if="{{record_data.length < 1}}">
+            <view class="bg-blue content">
+                <text>还没有头痛记录哦～</text>
+            </view>
+        </view>
 
-		<block wx:for="{{record_data}}" wx:for-index="idx">
+        <block wx:for="{{record_data}}" wx:for-index="idx">
+            <view class="cu-time" wx:if="{{record_data[idx-1].date != item.date}}">{{item.date}}</view>
+            <view class="cu-item" wx:if="{{item.cause != '' && item.id}}" catchtap="case_info" data-id="{{item.id}}">
+                <view class="content">
+                    <view class="cu-capsule radius">
+                        <view class="cu-tag bg-cyan">{{item.time.stage}}</view>
+                        <view class="cu-tag line-cyan">{{item.time.time}}</view>
+                    </view>
+                    <view class="margin-top">
+                        <!-- <van-rate value="{{ item.pain_grade }}" count="{{ item.pain_grade }}" size="{{ 15 }}" color="#ee0a24" />  -->
+                        <text>疼了 {{item.duration}} 小时，疼痛等级是 {{item.pain_grade}} 颗星，</text>
+                        <text wx:if="{{item.rest == 1}}">有得到休息，</text>
+                        <text wx:else>没有得到休息，</text>
 
-			<view class="cu-time" wx:if="{{record_data[idx-1].date != item.date}}">{{item.date}}</view>
+                        <text wx:if="{{item.taking_medicine == 1}}">有吃药，</text>
+                        <text wx:else>没有吃药，</text>
 
+                        <text>推测是以下原因诱发的：{{item.cause}}</text>
 
-      		<view class="cu-item text-blue" wx:if="{{item.none === 1}}">
-				<view class="bg-blue content">
-					<text>还没有头痛记录哦～</text>
-				</view>
-			</view>
+                    </view>
+                </view>
+            </view>
 
+            <view data-id="{{item.id}}" catchtap="case_info" class="cu-item text-red cuIcon-attentionforbidfill"
+                  wx:elif="{{item.pain_grade >= 4}}">
+                <view class="content bg-red shadow-blur">
+                    <text>{{item.time.time}}</text>
+                    <text>开始疼了{{item.duration}}小时，疼痛等级是 {{item.pain_grade}} 颗星，</text>
 
-			<view class="cu-item" wx:elif="{{item.cause != '' && item.id}}" catchtap="case_info" data-id="{{item.id}}">
-				<view class="content">
-					<view class="cu-capsule radius">
-						<view class="cu-tag bg-cyan">{{item.time.stage}}</view>
-						<view class="cu-tag line-cyan">{{item.time.time}}</view>
-					</view>
-					<view class="margin-top">
-						<!-- <van-rate value="{{ item.pain_grade }}" count="{{ item.pain_grade }}" size="{{ 15 }}" color="#ee0a24" />  -->
-						<text>  疼了 {{item.duration}} 小时，疼痛等级是 {{item.pain_grade}} 颗星，</text>
-						<text wx:if="{{item.rest == 1}}">  有得到休息，</text>
-						<text wx:else>  没有得到休息，</text>
+                    <text wx:if="{{item.rest == 1}}">有得到休息，</text>
+                    <text wx:else>没有得到休息，</text>
 
-						<text wx:if="{{item.taking_medicine == 1}}">  有吃药，</text>
-						<text wx:else>  没有吃药，</text>
+                    <text wx:if="{{item.taking_medicine == 1}}">有吃药</text>
+                    <text wx:else>没有吃药</text>
+                </view>
+            </view>
 
-						<text> 推测是以下原因诱发的：{{item.cause}}</text>
+            <view data-id="{{item.id}}" catchtap="case_info" class="cu-item text-blue" wx:elif="{{item.rest == 1}}">
+                <view class="bg-blue content">
+                    <text>{{item.time.time}}</text>
+                    <text>开始疼了{{item.duration}}小时，疼痛等级是 {{item.pain_grade}} 颗星，</text>
+                    <text wx:if="{{item.rest == 1}}">有得到休息，</text>
+                    <text wx:else>没有得到休息，</text>
 
-					</view>
-				</view>
-			</view>
+                    <text wx:if="{{item.taking_medicine == 1}}">有吃药</text>
+                    <text wx:else>没有吃药</text>
+                </view>
+            </view>
 
-			<view data-id="{{item.id}}" catchtap="case_info" class="cu-item text-red cuIcon-attentionforbidfill" wx:elif="{{item.pain_grade >= 4}}">
-				<view class="content bg-red shadow-blur">
-					<text>{{item.time.time}}</text>
-					<text>  开始疼了{{item.duration}}小时，疼痛等级是 {{item.pain_grade}} 颗星，</text>
+            <view data-id="{{item.id}}" catchtap="case_info" class="cu-item cur cuIcon-noticefill"
+                  wx:elif="{{item.taking_medicine == 1}}">
+                <view class="content bg-green shadow-blur">
+                    <text>{{item.time.time}}</text>
+                    <text>开始疼了{{item.duration}}小时，疼痛等级是 {{item.pain_grade}} 颗星，</text>
+                    <text wx:if="{{item.rest == 1}}">有得到休息，</text>
+                    <text wx:else>没有得到休息，</text>
 
-					<text wx:if="{{item.rest == 1}}">  有得到休息，</text>
-					<text wx:else>  没有得到休息，</text>
+                    <text wx:if="{{item.taking_medicine == 1}}">有吃药</text>
+                    <text wx:else>没有吃药</text>
+                </view>
+            </view>
 
-					<text wx:if="{{item.taking_medicine == 1}}">  有吃药</text>
-					<text wx:else>  没有吃药</text>
-				</view>
-			</view>
-
-			<view data-id="{{item.id}}" catchtap="case_info" class="cu-item text-blue" wx:elif="{{item.rest == 1}}">
-				<view class="bg-blue content">
-					<text>{{item.time.time}}</text>
-					<text>  开始疼了{{item.duration}}小时，疼痛等级是 {{item.pain_grade}} 颗星，</text>
-					<text wx:if="{{item.rest == 1}}">  有得到休息，</text>
-					<text wx:else>  没有得到休息，</text>
-
-					<text wx:if="{{item.taking_medicine == 1}}">  有吃药</text>
-					<text wx:else>  没有吃药</text>
-				</view>
-			</view>
-
-			<view data-id="{{item.id}}" catchtap="case_info" class="cu-item cur cuIcon-noticefill" wx:elif="{{item.taking_medicine == 1}}">
-				<view class="content bg-green shadow-blur">
-					<text>{{item.time.time}}</text>
-					<text>  开始疼了{{item.duration}}小时，疼痛等级是 {{item.pain_grade}} 颗星，</text>
-					<text wx:if="{{item.rest == 1}}">  有得到休息，</text>
-					<text wx:else>  没有得到休息，</text>
-
-					<text wx:if="{{item.taking_medicine == 1}}">  有吃药</text>
-					<text wx:else>  没有吃药</text>
-				</view>
-			</view>
-
-			<view data-id="{{item.id}}" catchtap="case_info" class="cu-timeline" wx:elif = "{{item.id}}">
-				<view class="cu-item">
-					<view class="content">
-						<text>{{item.time.time}}</text>
-						<text>  开始疼了{{item.duration}}小时，疼痛等级是 {{item.pain_grade}} 颗星</text>
-						<text wx:if="{{item.rest == 1}}">  有得到休息，</text>
-						<text wx:else>  没有得到休息，</text>
-						<text wx:if="{{item.taking_medicine == 1}}">  有吃药，</text>
-						<text wx:else>  没有吃药</text>
-					</view>
-				</view>
-			</view>
-		</block>
-		<view class="db" wx:if="{{record_data.length > 1}}"></view>
-	</view>
+            <view data-id="{{item.id}}" catchtap="case_info" class="cu-timeline" wx:elif="{{item.id}}">
+                <view class="cu-item">
+                    <view class="content">
+                        <text>{{item.time.time}}</text>
+                        <text>开始疼了{{item.duration}}小时，疼痛等级是 {{item.pain_grade}} 颗星</text>
+                        <text wx:if="{{item.rest == 1}}">有得到休息，</text>
+                        <text wx:else>没有得到休息，</text>
+                        <text wx:if="{{item.taking_medicine == 1}}">有吃药，</text>
+                        <text wx:else>没有吃药</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class="db" wx:if="{{record_data.length > 1}}"></view>
+    </view>
 
 
 </view>
 
 <view class="cu-bar tabbar margin-bottom-xl bg-white" style="position:fixed; bottom:-50rpx;width: 750rpx;">
-	<view class="action text-blue">
-		<view class="cuIcon-rank"></view> 记录
-	</view>
+    <view class="action text-blue">
+        <view class="cuIcon-rank"></view>
+        记录
+    </view>
 
-	<view class="action text-gray add-action" bindtap="clickTabBarSubmit">
-		<button class="cu-btn cuIcon-add bg-blue shadow"></button>
-		提交
-	</view>
+    <view class="action text-gray add-action" bindtap="clickTabBarSubmit">
+        <button class="cu-btn cuIcon-add bg-blue shadow"></button>
+        提交
+    </view>
 
-	<view class="action text-gray" bindtap="clickTabBarUser">
-		<view class="cuIcon-my">
-			<view class="cu-tag badge"></view>
-		</view>
-		我的
-	</view>
+    <view class="action text-gray" bindtap="clickTabBarUser">
+        <view class="cuIcon-my">
+            <view class="cu-tag badge"></view>
+        </view>
+        我的
+    </view>
 
 </view>
 
-<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;" wx:if = "{{loging}}">
-  <view class='load-progress-bar bg-blue' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
-  <view class='load-progress-spinner text-blue'></view>
+<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;" wx:if="{{loging}}">
+    <view class='load-progress-bar bg-blue' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+    <view class='load-progress-spinner text-blue'></view>
 </view>
